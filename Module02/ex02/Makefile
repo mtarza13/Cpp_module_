@@ -1,24 +1,38 @@
-NAME		= fixed
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mtarza <mtarza@student.1337.ma>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/12/22 06:54:35 by mtarza            #+#    #+#              #
+#    Updated: 2025/12/22 06:54:39 by mtarza           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-SRCS		= main.cpp Fixed.cpp
-OBJS		= $(SRCS:.cpp=.o)
+NAME = FixeD03
 
-CXX			= c++
-CXXFLAGS	= -Wall -Wextra -Werror -std=c++98
+CC = c++
 
-RM			= rm -f
+FLAGS = -Wall -Wextra -Werror -std=c++98
 
-all:		$(NAME)
+SRC_FILES = main.cpp Fixed.cpp
+SRC_OBJS = $(SRC_FILES:.cpp=.o)
 
-$(NAME):	$(OBJS)
-			$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
+all: $(NAME)
+
+$(NAME): $(SRC_OBJS)
+	$(CC) $(FLAGS) $(SRC_OBJS) -o $(NAME)
+
+%.o: %.cpp
+	$(CC) $(FLAGS) -o $@ -c $<
 
 clean:
-			$(RM) $(OBJS)
+	rm -f $(SRC_OBJS)
 
-fclean:		clean
-			$(RM) $(NAME)
+fclean: clean
+	rm -f  $(NAME)
 
-re:			fclean all
+re: fclean all
 
-.PHONY:		all clean fclean re
+.PHONY: all clean fclean re

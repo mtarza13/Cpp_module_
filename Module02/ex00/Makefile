@@ -5,26 +5,32 @@
 #                                                     +:+ +:+         +:+      #
 #    By: mtarza <mtarza@student.1337.ma>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/12/21 23:11:56 by mtarza            #+#    #+#              #
-#    Updated: 2025/12/21 23:23:32 by mtarza           ###   ########.fr        #
+#    Created: 2025/12/22 06:53:54 by mtarza            #+#    #+#              #
+#    Updated: 2025/12/22 06:54:00 by mtarza           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC= $(wildcard *.cpp)
-NAME= canon
-OBJ= $(SRC:.cpp=.o)
+NAME		= FixeD01
 
-all: $(NAME)
+SRCS		= main.cpp Fixed.cpp
+OBJS		= $(SRCS:.cpp=.o)
 
-$(NAME): $(OBJ)
-	c++ -Wall -Wextra -Werror -std=c++98 $(OBJ) -o $(NAME)
+CXX			= c++
+CXXFLAGS	= -Wall -Wextra -Werror -std=c++98
+
+RM			= rm -f
+
+all:		$(NAME)
+
+$(NAME):	$(OBJS)
+			$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
 clean:
-	rm -rf $(OBJ)
+			$(RM) $(OBJS)
 
-fclean: clean
-	rm -rf $(NAME)
+fclean:		clean
+			$(RM) $(NAME)
 
-re: fclean all
+re:			fclean all
 
-.PHONY: all clean fclean re
+.PHONY:		all clean fclean re
